@@ -2,7 +2,7 @@ require 'rubygems'
 require 'dm-core'
 
 # let us just rock a memory-bound sqlite3 database
-DataMapper.setup(:default, "sqlite3:memory")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:///tmp/cushion.db')
 
 class User
   include DataMapper::Resource
@@ -24,4 +24,4 @@ class Sit
   property :practice,   String
 end
 
-DataMapper.auto_migrate!  
+#DataMapper.auto_migrate!
