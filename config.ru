@@ -1,2 +1,2 @@
-require 'blog'
+require 'cushion'
 run Sinatra::Application
