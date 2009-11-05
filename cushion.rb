@@ -20,7 +20,8 @@ post "/register" do
   if !u.save 
     u.errors.inspect
   else
-      "good"
+      session[:user_id] = u.id
+      redirect '/'
   end
 end
 
@@ -41,4 +42,8 @@ end
 get "/logout" do
   session[:user_id] = nil
   redirect "/"
+end
+
+get "/sits/new/?" do
+  erb :sit_new
 end
