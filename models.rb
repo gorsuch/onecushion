@@ -26,6 +26,8 @@ class User
     end
   end
   
+  has n, :sits
+  
   def self.login(email, password)
     return self.first(:email => email, :hashed_password => Digest::SHA1.hexdigest(password))
   end
@@ -34,6 +36,8 @@ end
 
 class Sit
   include DataMapper::Resource
+  
+  belongs_to :user
   
   property :id,         Serial
   property :created_at, DateTime
