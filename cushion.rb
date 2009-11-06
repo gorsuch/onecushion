@@ -22,9 +22,9 @@ error do
     end
   rescue
     # need to do something special here in case bugzscout bombs.  Perhaps an email?
-  ensure
-    erb :error_500
   end
+  
+  erb :error_500
 end
 
 get "/" do
