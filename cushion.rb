@@ -11,16 +11,20 @@ configure do
 end
 
 error do
-  BugzScout.submit(options.bugzscout_url) do |scout|
-    scout.user = options.bugzscout_user
-    scout.project = options.bugzscout_project
-    scout.area = options.bugzscout_area
-    scout.title = env['sinatra.error'].class.name
-    scout.body = env['sinatra.error'].message + "\n\n" + env['sinatra.error'].backtrace.to_s
+  # we protect this so we don't get caught in some odd error loop in the case that this fails
+  begin
+    BugzScout.submit(options.bugzscout_url) do |scout|
+      scout.user = options.bugzscout_user
+      scout.project = options.bugzscout_project
+      scout.area = options.bugzscout_area
+      scout.title = env['sinatra.error'].class.name
+      scout.body = env['sinatra.error'].message + "\n\n" + env['sinatra.error'].backtrace.to_s
+    end
+  rescue
+    # need to do something special here in case bugzscout bombs.  Perhaps an email?
+  ensure
+    erb :error_500
   end
-  
-  erb :error_500
-  
 end
 
 get "/" do
