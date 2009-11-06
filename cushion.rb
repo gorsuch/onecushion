@@ -10,20 +10,25 @@ configure do
   set :bugzscout_area, ENV['BUGZSCOUT_AREA'] || 'Some Area'
 end
 
+helpers do
+  def scoutsubmit(title, message)
+    begin 
+      BugzScout.submit(options.bugzscout_url) do |scout|
+        scout.user = options.bugzscout_user
+        scout.project = options.bugzscout_project
+        scout.area = options.bugzscout_area
+        scout.title = title
+        scout.body = message
+      end
+    rescue
+      return false
+    end
+  end
+end
+
 error do
   # we protect this so we don't get caught in some odd error loop in the case that this fails
-  begin
-    BugzScout.submit(options.bugzscout_url) do |scout|
-      scout.user = options.bugzscout_user
-      scout.project = options.bugzscout_project
-      scout.area = options.bugzscout_area
-      scout.title = env['sinatra.error'].class.name
-      scout.body = env['sinatra.error'].message + "\n\n" + env['sinatra.error'].backtrace.to_s
-    end
-  rescue
-    # need to do something special here in case bugzscout bombs.  Perhaps an email?
-  end
-  
+  scoutsubmit(env['sinatra.error'].class.name, env['sinatra.error'].message + "\n\n" + env['sinatra.error'].backtrace.to_s)  
   erb :error_500
 end
 
