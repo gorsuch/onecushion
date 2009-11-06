@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'bugzscout'
 
 get "/" do
   erb :index
