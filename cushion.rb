@@ -3,6 +3,9 @@ require 'sinatra'
 require 'bugzscout'
 
 configure do
+  # start raising errors beyond this application
+  set :raise_errors, true
+  
   # configure bugzscout essentials
   set :bugzscout_url, ENV['BUGZSCOUT_URL'] || 'https://foobar.fogbugz.com/scoutsubmit.asp'
   set :bugzscout_user, ENV['BUGZSCOUT_USER'] || 'John Doe'
