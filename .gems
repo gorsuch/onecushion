@@ -1,1 +1,3 @@
-bugzscout, >=1.0.0
+bugzscout
+rack_bugzscout
+rack_errorpage
