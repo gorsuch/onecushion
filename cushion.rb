@@ -5,12 +5,6 @@ require 'bugzscout'
 configure do
   # start raising errors beyond this application
   set :raise_errors, true
-  
-  # configure bugzscout essentials
-  set :bugzscout_url, ENV['BUGZSCOUT_URL'] || 'https://foobar.fogbugz.com/scoutsubmit.asp'
-  set :bugzscout_user, ENV['BUGZSCOUT_USER'] || 'John Doe'
-  set :bugzscout_project, ENV['BUGZSCOUT_PROJECT'] || 'Some Project'
-  set :bugzscout_area, ENV['BUGZSCOUT_AREA'] || 'Some Area'
 end
 
 helpers do
