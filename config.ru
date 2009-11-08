@@ -5,5 +5,5 @@ require 'rack_bugzscout'
 require 'cushion'
 
 use Rack::ErrorPage, './public/500.html'
-use Rack::BugzScout, "https://styledbits.fogbugz.com/scoutsubmit.asp", "Michael Gorsuch", "inbox", "undecided"
+use Rack::BugzScout, ENV['BUGZSCOUT_URL'] || 'https://foobar.fogbugz.com/scoutsubmit.asp', ENV['BUGZSCOUT_USER'] || 'John Doe', ENV['BUGZSCOUT_PROJECT'] || 'inbox', ENV['BUGZSCOUT_AREA'] || 'undecided'
 run Sinatra::Application
