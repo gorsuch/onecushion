@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'bugzscout'
 
 configure do
   # start raising errors beyond this application
