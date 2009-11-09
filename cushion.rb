@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'twitter'
+require 'tweet_utils'
 
 configure do
   # start raising errors beyond this application

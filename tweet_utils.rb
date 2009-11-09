@@ -13,7 +13,15 @@ class String
     self.split(" ").reject do |item|
       item[0].chr != '@'
     end
-  end  
+  end
+  
+  def to_html
+    self.gsub(/(http:\/\/\S*)/) do |s|
+      "<a href='#{$1}'>#{$1}</a>"
+    end.gsub(/@(\w*)/) do |s|
+      "<a href='http://twitter.com/#{$1}'>@#{$1}</a>"
+    end
+  end
 end
 
 class Array
