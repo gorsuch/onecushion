@@ -2,7 +2,7 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title><%= @title ||= "One Cushion"%></title>
+	<title><%= @title ||= "One Cushion | Sit, tweet, and reflect."%></title>
 	<link rel="stylesheet" href="css/grid.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </head>
@@ -10,8 +10,9 @@
 <body>
   <div id='container' class='container_12'>
 	  <div id='header' class='grid_12'>
-	    <h1>One Cushion</h1>
+	    <h1 id="title">One Cushion</h1>
 	  </div>
+	
 
 	  <div id='content' class='grid_12'>
 	    <%=yield%>

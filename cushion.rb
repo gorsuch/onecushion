@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'twitter'
 
 configure do
   # start raising errors beyond this application
@@ -7,5 +8,6 @@ configure do
 end
 
 get "/" do
+  @tweets = Twitter::Search.new('#onecushion')
   erb :index
 end

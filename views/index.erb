@@ -1,4 +1,30 @@
-<h2>Coming Soon!</h2>
-<p>We're still being worked on, but you can learn about the general goal over <a href="http://styledbits.com/2009/11/06/fixing-my-practice-and-an-experiment-with-the-cloudy-social-web/">here</a>.</p>
+<h2>Sit, tweet, and reflect.</h2>
 
-<p>To get notified when we launch, just follow <a href="http://twitter.com/onecushion">onecushion</a> on Twitter!</p>
+<p>OneCushion is a simple and free service that helps you cultivate your meditation practice by providing an easy way for you to log, share, and discuss - all from the comfort of Twitter.  Just sit, tweet, and come here to reflect and grow.</p>
+
+<h2>How do I get started?</h2>
+<ol>
+  <li>Perform your meditation.</li>
+  <li>Send a tweet that includes the time you spent meditating and the #onecushion hashtag.</li>	
+  <li>Watch it appear here.</li>
+</ol>
+
+<%if @tweets%>
+<h2>Take a look at who's practicing now:</h2>
+<ul style="padding:0;">
+<%@tweets.each do |t|%>
+	<li style="margin: 5px; padding: 0; list-style:none;">
+		<div style="float: left; width: 60px; margin:0; padding:0;">
+			<img style="margin-top:5px; padding:0;" src="<%=t.profile_image_url%>" />
+		</div>
+		<div style="float: left; width: 650px; margin:0; padding:0;">
+			<div style="border-bottom: 1px solid #eee;">
+				<p style="padding:0; margin:0;"><%=t.text%></p>
+			</div>
+			<div><p style="padding:0; margin:0;">#stuff</p></div>
+		</div>
+		<div style="clear:both;">&nbsp;</div>
+	</li>
+<%end%>
+</ul>
+<%end%>
