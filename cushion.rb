@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'twitter'
+require 'models'
 require 'tweet_utils'
 
 configure do
@@ -9,6 +10,6 @@ configure do
 end
 
 get "/" do
-  @tweets = Twitter::Search.new('#onecushion')
+  @tweets = Twitter::Search.new(CGI.escape("#onecushion"))
   erb :index
 end
