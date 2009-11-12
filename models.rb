@@ -19,12 +19,10 @@ class Tweet
   
   def self.fetch
     query = CGI.escape('#onecushion')
+    outside_tweets = Twitter::Search.new(query)
     
-    if Tweet.all.count > 0
-      outside_tweets = Twitter::Search.new(query).since(Tweet.last.id)
-    else
-      outside_tweets = Twitter::Search.new(query)
-    end
+    outside_tweets = outside_tweets.since(Tweet.last.id) if Tweet.all.count > 0
+
     outside_tweets.each do |ot|
       t = Tweet.new
       t.attributes = ot
