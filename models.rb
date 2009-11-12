@@ -8,14 +8,14 @@ class Tweet
 
   property :id, Integer, :key => true
   property :from_user_id, Integer
-  property :from_user, String
-  property :profile_image_url, String
-  property :text, String
+  property :from_user, String, :length => 255
+  property :profile_image_url, String, :length => 255
+  property :text, String, :length => 255
   property :created_at, DateTime
   property :to_user_id, Integer
-  property :geo, String #unsure about this data type
-  property :iso_language_code, String
-  property :source, String
+  property :geo, String, :length => 255 #unsure about this data type
+  property :iso_language_code, String, :length => 255
+  property :source, String, :length => 255
   
   def self.fetch
     query = CGI.escape('#onecushion')
@@ -31,6 +31,7 @@ class Tweet
   end
   
   # needs to be moved into some other class, but will work for now
+  # postgres ONLY!
   def self.fix_migration
     repository(:default).adapter.query("ALTER TABLE tweets ALTER COLUMN id TYPE bigint")
     repository(:default).adapter.query("ALTER TABLE tweets ALTER COLUMN from_user_id TYPE bigint")
