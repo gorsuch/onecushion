@@ -29,4 +29,12 @@ class Tweet
       t.save
     end
   end
+  
+  # needs to be moved into some other class, but will work for now
+  def self.fix_migration
+    repository(:default).adapter.query("ALTER TABLE tweet ALTER COLUMN id TYPE bigint")
+    repository(:default).adapter.query("ALTER TABLE tweet ALTER COLUMN from_user_id TYPE bigint")
+    repository(:default).adapter.query("ALTER TABLE tweet ALTER COLUMN to_user_id TYPE bigint")
+  end
+  
 end
