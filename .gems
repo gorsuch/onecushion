@@ -2,5 +2,3 @@ bugzscout
 rack_bugzscout
 rack_errorpage
 twitter
-datamapper
-do_postgres
