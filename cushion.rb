@@ -10,6 +10,6 @@ configure do
 end
 
 get "/" do
-  @tweets = Twitter::Search.new(CGI.escape("#onecushion"))
+  @tweets = Tweet.all(:order => [:id.desc])
   erb :index
 end
