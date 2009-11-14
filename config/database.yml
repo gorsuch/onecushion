@@ -1,0 +1,5 @@
+production:
+  adapter: sqlite3
+  database: /tmp/cushion.db
+
+  
