@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'twitter'
 require 'models'
 require 'tweet_utils'
 
@@ -10,6 +9,6 @@ configure do
 end
 
 get "/" do
-  @tweets = Tweet.all(:order => [:id.desc])
+  @tweets = Tweet.find(:all, :order => 'twitter_id DESC')
   erb :index
 end
