@@ -10,6 +10,11 @@ class Init < ActiveRecord::Migration
       t.integer   :to_user_id
       t.text      :source_tweet
     end
+    
+    change_column :tweets, :twitter_id, :integer, :limit => 8
+    change_column :tweets, :from_user_id, :integer, :limit => 8
+    change_column :tweets, :to_user_id, :integer, :limit => 8
+    
   end
 
   def self.down
