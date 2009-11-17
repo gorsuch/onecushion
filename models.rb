@@ -12,7 +12,7 @@ class Tweet < ActiveRecord::Base
   def self.fetch
     query = '#onecushion'
     results = Twitter::Search.new(query)
-    results = results.since(Tweet.find(:first, :order => "twitter_id desc")) if Tweet.count > 0
+    results = results.since(Tweet.find(:first, :order => "twitter_id desc").twitter_id) if Tweet.count > 0
     
     results.each do |r|
       t = Tweet.new
