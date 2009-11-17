@@ -6,6 +6,7 @@ dbconfig = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection dbconfig['production']
 
 class Tweet < ActiveRecord::Base
+  
   serialize :source_tweet
   
   def self.fetch
@@ -28,9 +29,27 @@ class Tweet < ActiveRecord::Base
     
   end
   
-  def hashtags
+  def parse_hashtags
     text.split(" ").reject do |item|
       item[0].chr != '#'
+    end
+  end
+  
+  def parse_minutes
+    match_data = /.*(\d+) minute?/.match(self.text)
+    if match_data
+      match_data[1].to_i + self.parse_hours * 60
+    else
+      self.parse_hours * 60
+    end
+  end
+  
+  def parse_hours
+    match_data = /.*(\d+) hour?/.match(self.text)
+    if match_data
+      match_data[1].to_i
+    else
+      0
     end
   end
   
