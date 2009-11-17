@@ -53,4 +53,8 @@ class Tweet < ActiveRecord::Base
     end
   end
   
+  def before_save
+    self.minutes = parse_minutes
+  end
+  
 end
