@@ -12,4 +12,15 @@ namespace :db do
     ActiveRecord::Migration.verbose = true
     ActiveRecord::Migrator.migrate("db/migrate")
   end
+  
+  task(:fetch) do
+    require 'models'
+    Tweet.fetch
+  end
+  
+  task(:resave) do
+    require 'models'
+    Tweet.all.each {|t| t.save}
+  end
+  
 end
