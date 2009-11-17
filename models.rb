@@ -27,4 +27,11 @@ class Tweet < ActiveRecord::Base
     end
     
   end
+  
+  def hashtags
+    text.split(" ").reject do |item|
+      item[0].chr != '#'
+    end
+  end
+  
 end
