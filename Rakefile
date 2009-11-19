@@ -22,5 +22,10 @@ namespace :db do
     require 'models'
     Tweet.all.each {|t| t.save}
   end
-  
+    
+end
+
+task(:cron) do
+  require 'models'
+  Tweet.fetch
 end
