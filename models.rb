@@ -36,7 +36,7 @@ class Tweet < ActiveRecord::Base
   end
   
   def parse_minutes
-    match_data = /.*(\d+) minute?/.match(self.text)
+    match_data = /(\d+) min/.match(self.text)
     if match_data
       match_data[1].to_i + self.parse_hours * 60
     else
