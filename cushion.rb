@@ -11,6 +11,6 @@ end
 get "/" do
   @tweets = Tweet.find(:all, :order => 'twitter_id DESC')
   @minutes = Tweet.sum("minutes")
-  @title = "One Cushion - #{@minutes} minutes of meditaiton logged."
+  @title = "One Cushion"
   erb :index
 end
