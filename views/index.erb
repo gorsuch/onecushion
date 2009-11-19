@@ -1,8 +1,6 @@
-<h2><%=@minutes%> logged.</h2>
+<h2><%=@minutes%> minutes of meditation logged.</h2>
 
-<h2>Sit, tweet, and reflect.</h2>
-
-<p>OneCushion is a simple and free service that helps you cultivate your meditation practice by providing an easy way for you to log, share, and discuss - all from the comfort of Twitter.  Just sit, tweet, and come here to reflect and grow.</p>
+<p>One Cushion is a simple support tool for people who choose to spend time in meditation.  We ride on top of Twitter to make it easy.</p>
 
 <h2>How do I get started?</h2>
 <ol>
@@ -11,8 +9,10 @@
   <li>Watch it appear here.</li>
 </ol>
 
+<p>Want to know more?  Check out our <a href="http://onecushion.tumblr.com">blog</a>.</p>
+
 <%if @tweets%>
-<h2>Take a look at who's practicing now:</h2>
+<h2>Take a look at the latest updates:</h2>
 <ul style="padding:0;">
 <%@tweets.each do |t|%>
 	<li style="margin: 5px; padding: 0; list-style:none;">
