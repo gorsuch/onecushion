@@ -1,31 +1,19 @@
-<h2><%=@minutes%> minutes of meditation recorded.  Add to the pool!</h2>
+<p style="font-style:italic; font-weight: bold; color: #666; font-size: 110%;"><%=@minutes%> minutes of <a href="#" id="meditation-link">meditation</a> have been logged via Twitter.  It is time to <a href="#" id="instructions-link">add your practice to the pool</a>.</p>
 
-<p>One Cushion is a simple support tool for people who choose to spend time in meditation.  We ride on top of Twitter to make it easy.</p>
+<div id="meditation" style="display:none;">
+  <h2>Meditation?  What's that?</h2>
+  <p>When we say 'meditation', we mean a wide variety of things.  It could be a traditional meditative practice, such as zazen, or it might be contemplative prayer.  The important thing is that you are taking the time to do the work.</p>	
+</div>
 
-<h2>How do I get started?</h2>
-<ol>
-  <li>Perform your meditation.</li>
-  <li>Send a tweet that includes the time you spent meditating and the #onecushion hashtag.</li>	
-  <li>Watch it appear here.</li>
-</ol>
+<div id="instructions" style="display: none;">
+	<h2>How?</h2>
+	<p>One Cushion, this site, runs on top of <a href="http://twitter.com">Twitter</a>.  You can participate like so:</p>
+	<ol>
+	  <li>Sit.  Pray.  Practice.  Do what you do.</li>
+	  <li>Write a tweet mentioning how long you sat for and include the #onecushion hashtag. <a href="http://twitter.com/mgorsuch/status/5617102379">Here is an example</a>.</li>
+	  <li>Check back here in about an hour, and see your work get added to the total.</li>	
+	</ol>
+	
+	<p>We'll have a lot more features in the future, including the ability to track your practice over the long term as well as your friends.  For now, however, it was more important to get something launched.</p>
+</div>
 
-<p>Want to know more?  Check out the <a href="http://onecushion.tumblr.com">blog</a>.</p>
-
-<%if @tweets%>
-<h2>Take a look at the latest updates:</h2>
-<ul style="padding:0;">
-<%@tweets.each do |t|%>
-	<li style="margin: 5px; padding: 0; list-style:none;">
-		<div style="float: left; width: 60px; margin:0; padding:0;">
-			<img style="margin-top:5px; padding:0;" src="<%=t.profile_image_url%>" />
-		</div>
-		<div style="float: left; width: 650px; margin:0; padding:0;">
-			
-				<p style="padding:0; margin:0;"><a href="http://twitter.com/<%=t.from_user%>"><%=t.from_user%></a> <%=t.text.to_html%></p>
-			
-		</div>
-		<div style="clear:both;">&nbsp;</div>
-	</li>
-<%end%>
-</ul>
-<%end%>

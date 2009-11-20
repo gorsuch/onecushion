@@ -5,12 +5,26 @@
 	<title><%= @title ||= "One Cushion | Sit, tweet, and reflect."%></title>
 	<link rel="stylesheet" href="css/grid.css" />
 	<link rel="stylesheet" href="css/style.css" />
+	
+	<script type="text/javascript" src="jquery.js"></script>          
+	<script type="text/javascript">                                         
+	  $(document).ready(function() {
+	     $("#instructions-link").click(function() {
+	       $("#instructions").toggle("slow");
+	     });
+	
+	     $("#meditation-link").click(function() {
+	       $("#meditation").toggle("slow");
+	     });
+	   });                                 
+	 </script>
+	
 </head>
 
 <body>
   <div id='container' class='container_12'>
 	  <div id='header' class='grid_12'>
-	    <h1 id="title"><%=@title%></h1>
+	    
 	  </div>
 	
 	  <div id='content' class='grid_12'>

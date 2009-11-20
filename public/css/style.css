@@ -6,3 +6,7 @@ body {
 	font: 15px georgia, "times new roman", times, serif;
 	line-height: 1.4;
 }
+
+a {
+	color: #06c;
+}
